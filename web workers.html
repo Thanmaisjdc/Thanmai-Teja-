@@ -1,0 +1,40 @@
+
+HomeHTMLHTML Web WorkersTryit: HTML Worker
+Result Size: 668 x 455
+<!DOCTYPE html>
+<html>
+<body>
+​
+<p>Contact numbers: <output id="result"></output></p>
+<button onclick="startWorker()">Thanmai</button> 
+<button onclick="stopWorker()">Teja</button>
+​
+<p><strong>Note:</strong> Tcs employee in hyderabad after few years the salary are going to be increase in 2 years the salary was 100000.</p>
+​
+<script>
+var w;
+​
+function startWorker() {
+  if(typeof(Worker) !== "undefined") {
+    if(typeof(w) == "undefined") {
+      w = new Worker("demo_workers.js");
+    }
+    w.onmessage = function(event) {
+      document.getElementById("result").innerHTML = event.data;
+    };
+  } else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
+  }
+}
+​
+function stopWorker() { 
+  w.terminate();
+  w = undefined;
+}
+</script>
+​
+</body>
+</html>
+​
+​
+​
